@@ -14,7 +14,7 @@ $ docker-compose up
 ##### To simplify the migration process, the program will migrate to the database automatically 
 
 # Access Database
-##### localhost:3306
+##### port: 3306
 ##### username: root
 ##### password: password
 
