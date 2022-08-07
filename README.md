@@ -7,6 +7,29 @@ $ docker-compose build
 $ docker-compose up
 ```
 
+# Trigger notification.fcm pulish action for testing
+
+##### api: http://localhost:3001/notification/fcm
+```sh
+Method: Get
+Response: {
+    "success": true,
+    "reason": "success"
+}
+```
+##### Publish message
+
+```sh
+{ 
+    "identifier": "fcm-msg-a1beff5ac", 
+    "type": "device", 
+    "deviceId": "string", 
+    "text": "Notification message"
+}
+
+```
+
+
 # Database
 ### MySql
 
