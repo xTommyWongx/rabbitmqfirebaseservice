@@ -8,12 +8,6 @@ import initRouter from './src/utils/initRouter';
 import RabbitMqFacade from './src/model/rabbitmqFacade';
 import KnexConfig from './knexfile';
 
-
-//RABBIT_MQ_HOST=rabbitmq
-//"start": "nodemon --exec \"babel-node\" index.js"
-// "start": "nodemon --exec \"npm run migrate && babel-node\" index.js",
-// "start": "nodemon -L index.js --exec \"babel-node\" index.js"
-
 dotenv.config();
 const app = express();
 const NODE_ENV = process.env.NODE_ENV || 'development';

@@ -19,7 +19,6 @@ services:
     depends_on:
       - rabbitmq
       - db
-    # command: bash -c "sleep 10 && knex migrate:latest"
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3.9-management
@@ -30,8 +29,6 @@ services:
       - db
   db:
     image: mysql:5.7
-    # volumes:
-    #   - todo-mysql-data:/var/lib/mysql
     environment: 
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=${DB_NAME}
