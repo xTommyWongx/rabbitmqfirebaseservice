@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  app:
+    container_name: rabbit-mq-service
+    build: .
+    # restart: always
+    volumes: 
+      - ./index.js:/usr/src/app/index.js
+      - ./src:/usr/src/app/src
+    ports: 
+      - 3001:3001
+    environment: 
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - RABBIT_MQ_HOST=${RABBIT_MQ_HOST}
+      - RABBIT_MQ_PORT=${RABBIT_MQ_PORT}
+      - RABBIT_MQ_USERNAME=${RABBIT_MQ_USERNAME}
+      - RABBIT_MQ_PASSWORD=${RABBIT_MQ_PASSWORD}
+    depends_on:
+      - rabbitmq
+      - db
+    # command: bash -c "sleep 10 && knex migrate:latest"
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.9-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    # volumes:
+    #   - todo-mysql-data:/var/lib/mysql
+    environment: 
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - 3306:3306
+    
