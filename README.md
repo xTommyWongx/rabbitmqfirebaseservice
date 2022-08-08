@@ -7,6 +7,29 @@ $ docker-compose build
 $ docker-compose up
 ```
 
+# Environment Variable
+##### Fill in "FIREBASE_TOKEN" in .env file. The rest of environment variable remains the same.
+
+##### If the "FIREBASE_TOKEN" is not set up correctly, the http request to the firebase will not receive http status 200. 
+
+##### Then the service will not trigger further action.
+```sh
+NODE_ENV=development
+PORT=3001
+FIREBASE_TOKEN=
+
+RABBIT_MQ_HOST=rabbitmq
+RABBIT_MQ_PORT=5672
+RABBIT_MQ_USERNAME=guest
+RABBIT_MQ_PASSWORD=guest
+
+DB_NAME=FCM
+DB_USERNAME=user
+DB_PASSWORD=password
+DB_HOST=db
+DB_PORT=3306
+```
+
 # Trigger notification.fcm pulish action for testing
 
 ##### api: http://localhost:3001/notification/fcm
@@ -46,22 +69,6 @@ Response: {
 ##### username: guest
 ##### password: guest
 
-# Environment Variable
-```sh
-NODE_ENV=development
-PORT=3001
-
-RABBIT_MQ_HOST=rabbitmq
-RABBIT_MQ_PORT=5672
-RABBIT_MQ_USERNAME=guest
-RABBIT_MQ_PASSWORD=guest
-
-DB_NAME=FCM
-DB_USERNAME=user
-DB_PASSWORD=password
-DB_HOST=db
-DB_PORT=3306
-```
 
 # Troubleshoot
 ##### If you encounter any build error, please run the command below and rerun the command above
